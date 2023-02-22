@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { login, clearErrors } from "../../actions/userAction";
-import UserList from "../userList";
 import "./index.css";
 
 const Login = () => {
@@ -58,57 +57,50 @@ const Login = () => {
             alert(error);
             dispatch(clearErrors());
         }
-        if (isAuthenticated) {
-            alert("Login Successful");
-        }
-    }, [error, isAuthenticated]);
+    }, [error]);
 
     return (
         <div>
-            {isAuthenticated ? (
-                <UserList />
-            ) : (
-                <form name="Login" onSubmit={handleSubmit}>
-                    <h2>Let's set go!</h2>
-                    <div
-                        className={
-                            errors.username.length > 0
-                                ? "form-elem error-col"
-                                : "form-elem"
-                        }
-                    >
-                        <label htmlFor="username">username:</label>
-                        <input
-                            type="text"
-                            id="username"
-                            name="username"
-                            onChange={handleChange}
-                        />
-                        {errors.username.length > 0 && (
-                            <span className="error">{errors.username}</span>
-                        )}
-                    </div>
-                    <div
-                        className={
-                            errors.password.length > 0
-                                ? "form-elem error-col"
-                                : "form-elem"
-                        }
-                    >
-                        <label htmlFor="password">password:</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            onChange={handleChange}
-                        />
-                        {errors.password.length > 0 && (
-                            <span className="error">{errors.password}</span>
-                        )}
-                    </div>
-                    <input type="submit" className="submit" value="Login" />
-                </form>
-            )}
+            <form name="Login" onSubmit={handleSubmit}>
+                <h2>Let's set go!</h2>
+                <div
+                    className={
+                        errors.username.length > 0
+                            ? "form-elem error-col"
+                            : "form-elem"
+                    }
+                >
+                    <label htmlFor="username">username:</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        onChange={handleChange}
+                    />
+                    {errors.username.length > 0 && (
+                        <span className="error">{errors.username}</span>
+                    )}
+                </div>
+                <div
+                    className={
+                        errors.password.length > 0
+                            ? "form-elem error-col"
+                            : "form-elem"
+                    }
+                >
+                    <label htmlFor="password">password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        onChange={handleChange}
+                    />
+                    {errors.password.length > 0 && (
+                        <span className="error">{errors.password}</span>
+                    )}
+                </div>
+                <input type="submit" className="submit" value="Login" />
+            </form>
         </div>
     );
 };

@@ -4,18 +4,17 @@ import "./App.css";
 import Login from "./components/login";
 import Loader from "./components/loader";
 import { useSelector } from "react-redux";
+import UserList from "./components/userList";
 
 const App = () => {
-    const { loading } = useSelector((state) => state.currentUser);
-    React.useEffect(() => {
-        const token = localStorage.getItem("token");
-        console.log(token);
-    }, []);
+    const { loading, isAuthenticated } = useSelector(
+        (state) => state.currentUser
+    );
     return (
         <div className="App">
             {loading && <Loader />}
             <Header />
-            <Login />
+            {isAuthenticated ? <UserList /> : <Login />}
         </div>
     );
 };
