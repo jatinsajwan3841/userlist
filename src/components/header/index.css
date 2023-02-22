@@ -16,11 +16,13 @@
 }
 
 .head .profile-button {
+    height: 35px;
     width: 35px;
     border-radius: 50%;
     cursor: pointer;
     background: white;
     margin-right: 10px;
+    z-index: 2;
 }
 
 .dropdown {
@@ -31,13 +33,22 @@
     gap: 5px;
     padding: 30px;
     right: 20px;
-    bottom: -225px;
+    bottom: -265px;
     border-radius: 10px;
     background-color: rgba(204, 198, 198, 0.9);
     box-shadow: 0 0 10px rgb(204, 198, 198);
 }
 
+.dropdown::after {
+    content: "\279A";
+    position: absolute;
+    top: -25px;
+    right: 75px;
+    font-size: 40px;
+}
+
 .dropdown .profile-photo {
+    height: 60px;
     width: 60px;
     border-radius: 50%;
     background: white;
@@ -63,7 +74,7 @@
     cursor: pointer;
     user-select: none;
     border: 1px solid transparent;
-    padding: 0.375rem 0.75rem;
+    padding: 0.375rem 3rem;
     font-size: 1rem;
     border-radius: 0.25rem;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
@@ -74,4 +85,96 @@
     color: #fff;
     background-color: #5c636a;
     border-color: #565e64;
+}
+
+.dropdown .logout {
+    border-color: #de1738;
+    background-color: #de1738;
+}
+
+.dropdown .logout:hover {
+    background-color: #f21b3f;
+}
+
+.edit-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    height: 100vh;
+    width: 100vw;
+    border-radius: 10px;
+    background-color: rgba(204, 198, 198, 0.8);
+    box-shadow: 0 0 10px rgb(204, 198, 198);
+    overflow: auto;
+}
+
+.edit-form form {
+    margin-top: 60px;
+    position: relative;
+    width: 60%;
+}
+
+.edit-form .profile-photo {
+    height: 80px;
+    width: 80px;
+    margin: 20px;
+    border-radius: 50%;
+    background: white;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.edit-form .avatar {
+    position: relative;
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    border-radius: 50%;
+    background-color: rgb(160, 160, 160);
+}
+.dp {
+    position: absolute;
+    z-index: 20;
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    border-radius: 50%;
+}
+
+.upload {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    height: 20px;
+    width: 20px;
+    padding: 4px;
+    box-shadow: 0 0 8px rgb(240, 240, 240);
+    background-color: rgb(236, 236, 236);
+    border-radius: 50%;
+    z-index: 30;
+    cursor: pointer;
+}
+
+.upload::after {
+    content: "+";
+    position: absolute;
+    left: 5.5px;
+    top: -5px;
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(160, 149, 149);
+}
+
+.upload input {
+    display: none;
 }

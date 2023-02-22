@@ -5,11 +5,12 @@ import {
     getAllUsers,
     clearErrors,
     selectUsers,
+    clearSelectedUsers,
 } from "../../actions/userAction";
 import "./index.css";
 
 const UserList = () => {
-    const [showSelected, setShowSelected] = React.useState(false);
+    const [showSelected, setShowSelected] = React.useState(0);
 
     const dispatch = useDispatch();
     const { error, users } = useSelector((state) => state.currentUser);
@@ -22,15 +23,20 @@ const UserList = () => {
         }
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (back) => {
+        if (back === true) {
+            dispatch(clearSelectedUsers());
+        }
         setShowSelected((prev) => !prev);
     };
+
     React.useEffect(() => {
         if (error) {
             alert(error);
             dispatch(clearErrors());
         }
-    }, [error, users]);
+    }, [error]);
+
     React.useEffect(() => {
         dispatch(getAllUsers());
     }, []);

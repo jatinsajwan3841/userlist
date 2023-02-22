@@ -37,7 +37,7 @@ const SelectedList = ({ handleSubmit }) => {
                         ))}
                 </tbody>
             </table>
-            <button className="continue" onClick={handleSubmit}>
+            <button className="continue" onClick={() => handleSubmit(true)}>
                 Return
             </button>
         </div>
